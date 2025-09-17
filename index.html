@@ -9,7 +9,7 @@
       margin: 0;
       padding: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      color: #000; /* text implicit negru */
+      color: #000;
     }
 
     /* Fundal blurat și semi-transparent */
@@ -24,7 +24,6 @@
       z-index: -1;
     }
 
-    /* Conținut clar */
     .content {
       position: relative;
       z-index: 1;
@@ -35,7 +34,7 @@
     h1 {
       margin: 30px 0;
       font-size: 2.5em;
-      color: #000; /* titlu negru */
+      color: #000;
       text-shadow: 1px 1px 3px rgba(255,255,255,0.6);
     }
 
@@ -77,6 +76,7 @@
       justify-content: center;
       z-index: 1000;
       flex-direction: column;
+      overflow: hidden;
     }
 
     #lightbox img {
@@ -85,6 +85,8 @@
       border-radius: 10px;
       margin-bottom: 20px;
       box-shadow: 0 0 20px rgba(0,0,0,0.7);
+      user-select: none;
+      -webkit-user-drag: none;
     }
 
     #closeBtn {
@@ -193,6 +195,25 @@
 
     lightbox.addEventListener('click', () => { lightbox.style.display = 'none'; });
     lightboxImg.addEventListener('click', (e) => e.stopPropagation());
+
+    // --- Swipe pe telefon/tabletă ---
+    let startX = 0;
+    lightboxImg.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    });
+
+    lightboxImg.addEventListener('touchend', (e) => {
+      let endX = e.changedTouches[0].clientX;
+      let diffX = startX - endX;
+
+      if (diffX > 50) {
+        // swipe left
+        nextImage();
+      } else if (diffX < -50) {
+        // swipe right
+        prevImage();
+      }
+    });
   </script>
 </body>
 </html>
