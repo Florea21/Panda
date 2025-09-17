@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8">
+  <title>Galeria mea foto</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #f9f9f9, #e0e0e0);
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin: 30px 0;
+      font-size: 2.5em;
+      letter-spacing: 1px;
+      color: #444;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+      padding: 0 20px 40px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 15px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card img {
+      width: 100%;
+      display: block;
+      transition: transform 0.5s;
+    }
+    .card:hover img {
+      transform: scale(1.1);
+    }
+    .overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 15px;
+      background: rgba(0,0,0,0.5);
+      color: #fff;
+      font-weight: bold;
+      text-align: center;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .card:hover .overlay {
+      opacity: 1;
+    }
+    @media (max-width: 500px) {
+      h1 { font-size: 2em; }
+      .grid { gap: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <h1>Galeria mea foto</h1>
+  <div class="grid">
+    <div class="card">
+      <img src="BackgroundMustang.jpg" alt="Poză 1">
+      <div class="overlay">Poză 1</div>
+    </div>
+    <div class="card">
+      <img src="PozaFivemEditate.png" alt="Poză 2">
+      <div class="overlay">Poză 2</div>
+    </div>
+    <div class="card">
+      <img src="PozaTeaq.png" alt="Poză 3">
+      <div class="overlay">Poză 3</div>
+    </div>
+    <!-- adaugă aici restul pozelor în același format -->
+  </div>
+</body>
+</html>
